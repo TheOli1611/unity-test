@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    private Scene scene;
+    private int stage;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class PlayerController : MonoBehaviour
         count = 0; 
         SetCountText();
         winTextObject.SetActive(false);
+        scene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
