@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float movementY;
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public GameObject resetText;
     public GameObject winTextObject;
     private Scene scene;
     private int stage;
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText() 
     {
-        countText.text =  "Count: " + count.ToString();
+        countText.text =  "Score: " + count.ToString();
         if(stage == 1)
         {
             if (count >= 6)
@@ -92,6 +93,7 @@ public class PlayerController : MonoBehaviour
             if(count >= 12)
             {
                 winTextObject.SetActive(true);
+                resetText.SetActive(false);
                 winTextObject.GetComponent<TextMeshProUGUI>().text = "You Win!\nTeleporting...";
                 StartCoroutine(NextScene(3));
             }
