@@ -25,6 +25,19 @@ public class PlayerController : MonoBehaviour
         SetCountText();
         winTextObject.SetActive(false);
         scene = SceneManager.GetActiveScene();
+
+        if(scene.name.Equals("Minigame"))
+        {
+            stage = 1;
+        }
+        else if(scene.name.Equals("Level 2"))
+        {
+            stage = 2;
+        }
+        else if(scene.name.Equals("Level 3"))
+        {
+            stage = 3;
+        }
     }
 
     // Update is called once per frame
@@ -54,10 +67,35 @@ public class PlayerController : MonoBehaviour
     void SetCountText() 
     {
         countText.text =  "Count: " + count.ToString();
-        if (count >= 6)
+        if(stage == 1)
         {
-            winTextObject.SetActive(true);
-            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            if (count >= 6)
+            {
+                winTextObject.SetActive(true);
+                winTextObject.GetComponent<TextMeshProUGUI>().text = "You Win!\nTeleporting...";
+                Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+                StartCoroutine(NextScene(3));
+            }
+        }
+        if(stage == 2)
+        {
+            if(count >= 13)
+            {
+                winTextObject.SetActive(true);
+                winTextObject.GetComponent<TextMeshProUGUI>().text = "You Win!\nTeleporting...";
+                Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+                StartCoroutine(NextScene(3));
+            }
+        }
+        if(stage == 3)
+        {
+            if(count >= 12)
+            {
+                winTextObject.SetActive(true);
+                winTextObject.GetComponent<TextMeshProUGUI>().text = "You Win!\nTeleporting...";
+                StartCoroutine(NextScene(3));
+            }
+
         }
     }
 
@@ -71,6 +109,12 @@ public class PlayerController : MonoBehaviour
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
         }
+    }
+
+    public IEnumerator NextScene(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(stage);
     }
 }
 

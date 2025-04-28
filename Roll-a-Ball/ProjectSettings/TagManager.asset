@@ -6,6 +6,11 @@ TagManager:
   tags:
   - PickUp
   - Enemy
+  - Door
+  - Box
+  - BlueButton
+  - BlueBox
+  - BlueDoor
   layers:
   - Default
   - TransparentFX
