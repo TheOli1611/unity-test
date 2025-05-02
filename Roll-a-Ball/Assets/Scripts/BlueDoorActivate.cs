@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlueDoorActivate : MonoBehaviour
 {
     public GameObject blueDoor;
+    public GameObject blueDoor2;
     public GameObject blueButton;
     public GameObject box;
     public Transform location;
@@ -28,6 +29,7 @@ public class BlueDoorActivate : MonoBehaviour
         if (collision.gameObject.CompareTag("BlueBox"))
         {
             blueButton.SetActive(false);
+            blueDoor2.SetActive(false);
             blueDoor.SetActive(false);
         }
     }

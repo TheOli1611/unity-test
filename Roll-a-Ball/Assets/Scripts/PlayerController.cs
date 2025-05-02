@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private Scene scene;
     private int stage;
 
+    public Transform playerSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,10 @@ public class PlayerController : MonoBehaviour
         {
             stage = 3;
         }
+        else if(scene.name.Equals("Level 4"))
+        {
+            stage = 4;
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +53,41 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement * speed); 
    }
+    private void Update()
+    {
+        if(stage == 1)
+        {
+            if(gameObject.transform.position.y < 10)
+            {
+                gameObject.transform.position = playerSpawn.transform.position;
+            }
+        }
+
+        if(stage == 2)
+        {
+            if(gameObject.transform.position.y < 5)
+            {
+                gameObject.transform.position = playerSpawn.transform.position;
+            }
+        }
+        
+        if(stage == 3)
+        {
+            if(gameObject.transform.position.y < -4)
+            {
+                gameObject.transform.position = playerSpawn.transform.position;
+            }
+        }
+
+        if(stage == 4)
+        {
+            if(gameObject.transform.position.y < -20)
+            {
+                Debug.Log("detected");
+                gameObject.transform.position = playerSpawn.transform.position;
+            }
+        }
+    }
 
     void OnMove (InputValue movementValue)
     {
