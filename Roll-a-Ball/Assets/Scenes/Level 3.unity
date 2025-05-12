@@ -3999,7 +3999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueDoor: {fileID: 1794649187}
-  blueDoor2: {fileID: 0}
+  blueDoor2: {fileID: 1794649187}
   blueButton: {fileID: 1309618299}
   box: {fileID: 1333939089}
   location: {fileID: 603046751}
