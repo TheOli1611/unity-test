@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb; 
+    private Rigidbody rb;
     private int count;
     private float movementX;
     private float movementY;
@@ -17,71 +17,72 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     private Scene scene;
     private int stage;
+    private Vector3 vector3;
 
     public Transform playerSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent <Rigidbody>(); 
-        count = 0; 
+        rb = GetComponent<Rigidbody>();
+        count = 0;
         SetCountText();
         winTextObject.SetActive(false);
         scene = SceneManager.GetActiveScene();
 
-        if(scene.name.Equals("Minigame"))
+        if (scene.name.Equals("Minigame"))
         {
             stage = 1;
         }
-        else if(scene.name.Equals("Level 2"))
+        else if (scene.name.Equals("Level 2"))
         {
             stage = 2;
         }
-        else if(scene.name.Equals("Level 3"))
+        else if (scene.name.Equals("Level 3"))
         {
             stage = 3;
         }
-        else if(scene.name.Equals("Level 4"))
+        else if (scene.name.Equals("Level 4"))
         {
             stage = 4;
         }
     }
 
     // Update is called once per frame
-    private void FixedUpdate() 
-   {
-        Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
-        rb.AddForce(movement * speed); 
-   }
+    private void FixedUpdate()
+    {
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+        rb.AddForce(movement * speed);
+    }
     private void Update()
     {
-        if(stage == 1)
+        if (stage == 1)
         {
-            if(gameObject.transform.position.y < 10)
+            if (gameObject.transform.position.y < 10)
             {
                 gameObject.transform.position = playerSpawn.transform.position;
             }
         }
 
-        if(stage == 2)
+        if (stage == 2)
         {
-            if(gameObject.transform.position.y < 5)
-            {
-                gameObject.transform.position = playerSpawn.transform.position;
-            }
-        }
-        
-        if(stage == 3)
-        {
-            if(gameObject.transform.position.y < -4)
+            if (gameObject.transform.position.y < 5)
             {
                 gameObject.transform.position = playerSpawn.transform.position;
             }
         }
 
-        if(stage == 4)
+        if (stage == 3)
         {
-            if(gameObject.transform.position.y < -20)
+            if (gameObject.transform.position.y < -4)
+            {
+                gameObject.transform.position = playerSpawn.transform.position;
+            }
+        }
+
+        if (stage == 4)
+        {
+            if (gameObject.transform.position.y < -20)
             {
                 Debug.Log("detected");
                 gameObject.transform.position = playerSpawn.transform.position;
@@ -89,16 +90,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnMove (InputValue movementValue)
+    void OnMove(InputValue movementValue)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>(); 
-        movementX = movementVector.x; 
-        movementY = movementVector.y; 
+        Vector2 movementVector = movementValue.Get<Vector2>();
+        movementX = movementVector.x;
+        movementY = movementVector.y;
     }
 
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PickUp")) 
+        if (other.gameObject.CompareTag("PickUp"))
         {
             other.gameObject.SetActive(false);
             count = count + 1;
@@ -106,10 +107,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SetCountText() 
+    void SetCountText()
     {
-        countText.text =  "Score: " + count.ToString();
-        if(stage == 1)
+        countText.text = "Score: " + count.ToString();
+        if (stage == 1)
         {
             if (count >= 6)
             {
@@ -119,9 +120,9 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(NextScene(3));
             }
         }
-        if(stage == 2)
+        if (stage == 2)
         {
-            if(count >= 13)
+            if (count >= 13)
             {
                 winTextObject.SetActive(true);
                 winTextObject.GetComponent<TextMeshProUGUI>().text = "You Win!\nTeleporting...";
@@ -129,9 +130,9 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(NextScene(3));
             }
         }
-        if(stage == 3)
+        if (stage == 3)
         {
-            if(count >= 12)
+            if (count >= 12)
             {
                 winTextObject.SetActive(true);
                 resetText.SetActive(false);
@@ -146,11 +147,14 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            StartCoroutine(GameOverScene(3));
+            Debug.Log("timer start");
             // Destroy the current object
-            Destroy(gameObject); 
+            gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             // Update the winText to display "You Lose!"
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            
         }
     }
 
@@ -158,6 +162,14 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(stage);
+    }
+
+    public IEnumerator GameOverScene(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("timer end");
+        SceneManager.LoadScene("GameOver");
+        Debug.Log("change scene");
     }
 }
 
