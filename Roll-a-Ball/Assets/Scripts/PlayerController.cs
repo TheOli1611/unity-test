@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     private Scene scene;
     private int stage;
-    private Vector3 vector3;
+    private Boolean StartLoaded;
 
     public Transform playerSpawn;
     public AudioSource death;
@@ -184,7 +185,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator NextScene(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(stage);
+        SceneManager.LoadScene(stage + 1);
     }
 
     public IEnumerator GameOverScene(float delay)
