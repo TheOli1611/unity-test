@@ -20,6 +20,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 vector3;
 
     public Transform playerSpawn;
+    public AudioSource death;
+    public AudioSource Level1Music;
+    public AudioSource collect;
+    public AudioSource Level2Music;
+    public AudioSource Level3Music;
+    public AudioSource Level4Music;
 
     // Start is called before the first frame update
     void Start()
@@ -33,18 +39,22 @@ public class PlayerController : MonoBehaviour
         if (scene.name.Equals("Minigame"))
         {
             stage = 1;
+            Level1Music.Play();
         }
         else if (scene.name.Equals("Level 2"))
         {
             stage = 2;
+            Level2Music.Play();
         }
         else if (scene.name.Equals("Level 3"))
         {
             stage = 3;
+            Level3Music.Play();
         }
         else if (scene.name.Equals("Level 4"))
         {
             stage = 4;
+            Level4Music.Play();
         }
     }
 
@@ -101,6 +111,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PickUp"))
         {
+            collect.Play();
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
@@ -141,12 +152,24 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        if (stage == 4)
+        {
+            if (count >= 11)
+            {
+                winTextObject.SetActive(true);
+                resetText.SetActive(false);
+                winTextObject.GetComponent<TextMeshProUGUI>().text = "You Win!";
+                StartCoroutine(GameEndScene(3));
+            }
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            death.Play();
             StartCoroutine(GameOverScene(3));
             Debug.Log("timer start");
             // Destroy the current object
@@ -170,6 +193,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("timer end");
         SceneManager.LoadScene("GameOver");
         Debug.Log("change scene");
+    }
+    public IEnumerator GameEndScene(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("GameEnd");
     }
 }
 
