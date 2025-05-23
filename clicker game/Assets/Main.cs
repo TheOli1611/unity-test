@@ -8,9 +8,10 @@ public class Main : MonoBehaviour
 {
     public Double CDCount;
     public Double requiredAmount = 20;
-    public int timesUpgraded = 1;
+    public int timesUpgraded = 0;
     public Button upgradeAddButton;
     public GameObject upgradeShopUI;
+    public Boolean upgradeShopOpened = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,16 @@ public class Main : MonoBehaviour
 
     public void UpgradeShopOpen()
     {
-        upgradeShopUI.SetActive(true);
+        if (upgradeShopOpened == false)
+        {
+            upgradeShopUI.SetActive(true);
+            upgradeShopOpened = true;
+        }
+        else if (upgradeShopOpened == true)
+        {
+            upgradeShopUI.SetActive(false);
+            upgradeShopOpened = false;
+        }
     }
 
     public void Upgrade1()
