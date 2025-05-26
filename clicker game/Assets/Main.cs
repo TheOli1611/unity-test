@@ -18,6 +18,8 @@ public class Main : MonoBehaviour
     public Button upgradeButton1;
     public TextMeshProUGUI priceText1;
     public TextMeshProUGUI timesUpgradedText1;
+    [Header("Cloud Helpers Upgrade")]
+    public Double requiredAmount2 = 200;
     
 
     // Start is called before the first frame update
@@ -43,13 +45,28 @@ public class Main : MonoBehaviour
 
     }
 
+    /** GENERAL
+        This contains:
+        - Adding CD
+        - Updating CD Text
+        - Opening shop UI
+
+    **/
+
+    //adds CD with every click and updates the text
     public void AddCD()
     {
         CDCount = CDCount + 1 + timesUpgraded1;
         Debug.Log(CDCount);
         UpdateCDCountText();
     }
+    //updates CD Count text
+    public void UpdateCDCountText()
+    {
+        CDCountText.text = CDCount.ToString();
+    }
 
+    //opens and closes the shop UI
     public void UpgradeShopOpen()
     {
         if (upgradeShopOpened == false)
@@ -63,7 +80,16 @@ public class Main : MonoBehaviour
             upgradeShopOpened = false;
         }
     }
+    
+    /** SHAKER UPGRADE
+        This contains:
+        - Updating shaker price
+        - Buying upgrade with CD
+        - Keeping track of number of times upgraded
+        - Updates text
+    **/
 
+    //the first shop upgrade. Lets you buy the upgrade and makes the price higher
     public void Upgrade1()
     {
         if (CDCount >= requiredAmount1)
@@ -78,18 +104,15 @@ public class Main : MonoBehaviour
         }
     }
 
+    //updates price text for upgrade 1
     public void UpdatePriceText()
     {
         priceText1.text = requiredAmount1.ToString() + " CD";
     }
 
+    //updates times upgraded text for upgrade 1
     public void UpdateTimesUpgradedText()
     {
         timesUpgradedText1.text = timesUpgraded1.ToString();
-    }
-
-    public void UpdateCDCountText()
-    {
-        CDCountText.text = CDCount.ToString();
     }
 }
