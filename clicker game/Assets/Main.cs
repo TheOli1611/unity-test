@@ -19,7 +19,7 @@ public class Main : MonoBehaviour
     public TextMeshProUGUI priceText1;
     public TextMeshProUGUI timesUpgradedText1;
     [Header("Cloud Helpers Upgrade")]
-    public Double requiredAmount2 = 200;
+    public Double requiredAmount2 = 300;
     
 
     // Start is called before the first frame update
