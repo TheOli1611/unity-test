@@ -20,7 +20,11 @@ public class Main : MonoBehaviour
     public TextMeshProUGUI timesUpgradedText1;
     [Header("Cloud Helpers Upgrade")]
     public Double requiredAmount2 = 300;
-    
+    public int timesUpgraded2 = 0;
+    public Button upgradeButton2;
+    public TextMeshProUGUI priceText2;
+    public TextMeshProUGUI timesUpgradedText2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +84,7 @@ public class Main : MonoBehaviour
             upgradeShopOpened = false;
         }
     }
-    
+
     /** SHAKER UPGRADE
         This contains:
         - Updating shaker price
@@ -108,11 +112,40 @@ public class Main : MonoBehaviour
     public void UpdatePriceText()
     {
         priceText1.text = requiredAmount1.ToString() + " CD";
+        priceText2.text = requiredAmount2.ToString() + " CD";
     }
 
     //updates times upgraded text for upgrade 1
     public void UpdateTimesUpgradedText()
     {
         timesUpgradedText1.text = timesUpgraded1.ToString();
+        timesUpgradedText2.text = timesUpgraded2.ToString();
+    }
+
+    /** CLOUD HELPER UPGRADE
+        This contains:
+        - 
+    **/
+
+    public void Upgrade2()
+    {
+        if (CDCount >= requiredAmount2)
+        {
+            CDCount = CDCount - requiredAmount2;
+            Debug.Log("New Total" + CDCount);
+            timesUpgraded2 += 1;
+            requiredAmount2 = Math.Round(20 * Math.Pow(2.5, timesUpgraded2));
+            UpdatePriceText();
+            UpdateTimesUpgradedText();
+            UpdateCDCountText();
+        }
+    }
+  
+    public void PassiveIncome()
+    {
+        if (timesUpgraded2 > 0)
+        {
+            CDCount = CDCount + 1 + timesUpgraded1;
+        }
     }
 }
