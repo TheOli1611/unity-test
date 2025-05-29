@@ -8,7 +8,7 @@ using TMPro;
 public class Main : MonoBehaviour
 {
     [Header("General")]
-    public Double CDCount;
+    public static Double CDCount;
     public TextMeshProUGUI CDCountText;
     public GameObject upgradeShopUI;
     public Boolean upgradeShopOpened = false;
@@ -45,6 +45,21 @@ public class Main : MonoBehaviour
         else
         {
             upgradeButton1.interactable = false;
+        }
+
+        if (CDCount >= requiredAmount2)
+        {
+            upgradeButton2.interactable = true;
+        }
+        else
+        {
+            upgradeButton2.interactable = false;
+        }
+
+        if (timesUpgraded2 > 0)
+        {
+            StartCoroutine("AddCDPerSec");
+            UpdateCDCountText();
         }
 
     }
@@ -140,12 +155,16 @@ public class Main : MonoBehaviour
             UpdateCDCountText();
         }
     }
-  
-    public void PassiveIncome()
+
+    IEnumerator AddCDPerSec()
     {
-        if (timesUpgraded2 > 0)
+        WaitForSeconds delay = new WaitForSeconds(1);
+
+        while (true)
         {
-            CDCount = CDCount + 1 + timesUpgraded1;
+            CDCount += 1;
+            yield return delay;
         }
     }
+
 }
