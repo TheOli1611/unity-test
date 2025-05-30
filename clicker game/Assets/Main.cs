@@ -13,17 +13,21 @@ public class Main : MonoBehaviour
     public GameObject upgradeShopUI;
     public Boolean upgradeShopOpened = false;
     [Header("Shaker Upgrade")]
-    public Double requiredAmount1 = 20;
+    public int basePrice1 = 20;
+    public Double requiredAmount1;
     public int timesUpgraded1 = 0;
     public Button upgradeButton1;
     public TextMeshProUGUI priceText1;
     public TextMeshProUGUI timesUpgradedText1;
     [Header("Cloud Helpers Upgrade")]
-    public Double requiredAmount2 = 300;
+    public int basePrice2 = 50;
+    public Double requiredAmount2;
     public int timesUpgraded2 = 0;
     public Button upgradeButton2;
     public TextMeshProUGUI priceText2;
     public TextMeshProUGUI timesUpgradedText2;
+    public float pointTimer;
+    public float pointSpeed = 1f;
 
 
     // Start is called before the first frame update
@@ -32,6 +36,11 @@ public class Main : MonoBehaviour
         CDCount = 0;
         upgradeButton1.interactable = false;
         UpdatePriceText();
+
+        requiredAmount1 = basePrice1;
+        requiredAmount2 = basePrice2;
+
+        pointTimer = Time.fixedTime;
     }
 
     // Update is called once per frame
@@ -56,10 +65,11 @@ public class Main : MonoBehaviour
             upgradeButton2.interactable = false;
         }
 
-        if (timesUpgraded2 > 0)
+        if (timesUpgraded2 > 0 && Time.fixedTime - pointTimer >= pointSpeed)
         {
-            StartCoroutine("AddCDPerSec");
+            CDCount += 1 + timesUpgraded2 - 1;
             UpdateCDCountText();
+            pointTimer = Time.fixedTime;
         }
 
     }
@@ -116,7 +126,7 @@ public class Main : MonoBehaviour
             CDCount = CDCount - requiredAmount1;
             Debug.Log("New Total" + CDCount);
             timesUpgraded1 += 1;
-            requiredAmount1 = Math.Round(20 * Math.Pow(2.5, timesUpgraded1));
+            requiredAmount1 = Math.Round(basePrice1 * Math.Pow(2.5, timesUpgraded1));
             UpdatePriceText();
             UpdateTimesUpgradedText();
             UpdateCDCountText();
@@ -149,7 +159,7 @@ public class Main : MonoBehaviour
             CDCount = CDCount - requiredAmount2;
             Debug.Log("New Total" + CDCount);
             timesUpgraded2 += 1;
-            requiredAmount2 = Math.Round(20 * Math.Pow(2.5, timesUpgraded2));
+            requiredAmount2 = Math.Round(basePrice2 * Math.Pow(1.5, timesUpgraded2));
             UpdatePriceText();
             UpdateTimesUpgradedText();
             UpdateCDCountText();

@@ -2077,7 +2077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1144646726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2354,16 +2354,20 @@ MonoBehaviour:
   CDCountText: {fileID: 1951621098}
   upgradeShopUI: {fileID: 1144646725}
   upgradeShopOpened: 0
+  basePrice1: 20
   requiredAmount1: 20
   timesUpgraded1: 0
   upgradeButton1: {fileID: 1030426091}
   priceText1: {fileID: 918258881}
   timesUpgradedText1: {fileID: 2025572065}
-  requiredAmount2: 300
+  basePrice2: 50
+  requiredAmount2: 50
   timesUpgraded2: 0
   upgradeButton2: {fileID: 748698017}
   priceText2: {fileID: 1978522538}
   timesUpgradedText2: {fileID: 893216297}
+  pointTimer: 0
+  pointSpeed: 1
 --- !u!114 &1312587781
 MonoBehaviour:
   m_ObjectHideFlags: 0
