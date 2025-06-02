@@ -12,6 +12,10 @@ public class Main : MonoBehaviour
     public TextMeshProUGUI CDCountText;
     public GameObject upgradeShopUI;
     public Boolean upgradeShopOpened = false;
+    [Header("Menu")]
+    public static Double CDCountOverall;
+    public TextMeshProUGUI CDCountOverallText;
+    public GameObject menuUI;
     [Header("Shaker Upgrade")]
     public int basePrice1 = 20;
     public Double requiredAmount1;
@@ -109,6 +113,12 @@ public class Main : MonoBehaviour
             upgradeShopOpened = false;
         }
     }
+
+    /** MENU
+        This contains:
+        - Showcasing the highest CD count
+        - Updating overall CD count text
+    **/
 
     /** SHAKER UPGRADE
         This contains:
