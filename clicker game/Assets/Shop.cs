@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class Shop : MonoBehaviour
 {
     public GameObject shopMenu;
     public Button openShopButton;
+    public Boolean shopOpened;
     public Button closeShopButton;
 
     // Start is called before the first frame update
@@ -24,9 +26,11 @@ public class Shop : MonoBehaviour
     public void ShopUIOpen()
     {
         shopMenu.SetActive(true);
+        shopOpened = true;
     }
     public void ShopUIClose()
     {
         shopMenu.SetActive(false);
+        shopOpened = false;
     }
 }

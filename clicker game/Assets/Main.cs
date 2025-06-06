@@ -12,6 +12,10 @@ public class Main : MonoBehaviour
     public TextMeshProUGUI CDCountText;
     public GameObject upgradeShopUI;
     public Boolean upgradeShopOpened = false;
+    public GameObject arrow;
+    public GameObject arrow2;
+    public Boolean tutorialPlayed = false;
+    public Shop shop;
     [Header("Menu")]
     public static Double CDCountOverall;
     public TextMeshProUGUI CDCountOverallText;
@@ -74,6 +78,21 @@ public class Main : MonoBehaviour
             CDCount += 1 + timesUpgraded2 - 1;
             UpdateCDCountText();
             pointTimer = Time.fixedTime;
+        }
+
+        if (tutorialPlayed == false && CDCount >= 20)
+        {
+            arrow.SetActive(true);
+            if (upgradeShopOpened == true)
+            {
+                arrow.SetActive(false);
+                arrow2.SetActive(true);
+                if (shop.shopOpened == true)
+                {
+                    arrow2.SetActive(false);
+                    tutorialPlayed = true;
+                }
+            }
         }
 
     }
