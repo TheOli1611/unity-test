@@ -10,16 +10,18 @@ public class Main : MonoBehaviour
     [Header("General")]
     public static Double CDCount;
     public TextMeshProUGUI CDCountText;
+    public static Double CDOverall = 0;
     public GameObject upgradeShopUI;
     public Boolean upgradeShopOpened = false;
     public GameObject arrow;
     public GameObject arrow2;
     public Boolean tutorialPlayed = false;
+    public Boolean tutorialPlayed2 = false;
     public Shop shop;
     [Header("Menu")]
-    public static Double CDCountOverall;
-    public TextMeshProUGUI CDCountOverallText;
     public GameObject menuUI;
+    public Button menuButton;
+    public Boolean menuOpened;
     [Header("Shaker Upgrade")]
     public int basePrice1 = 20;
     public Double requiredAmount1;
@@ -36,6 +38,10 @@ public class Main : MonoBehaviour
     public TextMeshProUGUI timesUpgradedText2;
     public float pointTimer;
     public float pointSpeed = 1f;
+    [Header("Quest")]
+    public int questAmount;
+    public Button claimButton;
+    public TextMeshProUGUI questAmountText;
 
 
     // Start is called before the first frame update
@@ -76,25 +82,30 @@ public class Main : MonoBehaviour
         if (timesUpgraded2 > 0 && Time.fixedTime - pointTimer >= pointSpeed)
         {
             CDCount += 1 + timesUpgraded2 - 1;
+            CDOverall += 1 + timesUpgraded2 - 1;
             UpdateCDCountText();
             pointTimer = Time.fixedTime;
         }
 
-        if (tutorialPlayed == false && CDCount >= 20)
-        {
-            arrow.SetActive(true);
-            if (upgradeShopOpened == true)
+        /**while(tutorialPlayed == false) {
+            if (CDCount >= 20)
             {
-                arrow.SetActive(false);
-                arrow2.SetActive(true);
-                if (shop.shopOpened == true)
+                arrow.SetActive(true);
+                if (upgradeShopOpened == true)
                 {
-                    arrow2.SetActive(false);
-                    tutorialPlayed = true;
+                    arrow.SetActive(false);
+                    arrow2.SetActive(true);
+                    if (shop.shopOpened == true)
+                    {
+                        Debug.Log("please work");
+                        arrow2.SetActive(false);
+                        tutorialPlayed = true;
+                        tutorialPlayed2 = true;
+                    }
                 }
             }
         }
-
+        **/
     }
 
     /** GENERAL
@@ -109,6 +120,12 @@ public class Main : MonoBehaviour
     public void AddCD()
     {
         CDCount = CDCount + 1 + timesUpgraded1;
+        CDOverall = CDOverall + 1 + timesUpgraded1;
+        questAmount += 1;
+        if(questAmount >= 500)
+        {
+            questAmount = 500;
+        }
         Debug.Log(CDCount);
         UpdateCDCountText();
     }
@@ -137,7 +154,21 @@ public class Main : MonoBehaviour
         This contains:
         - Showcasing the highest CD count
         - Updating overall CD count text
+        - Opening menu
     **/
+
+    //opening menu
+    public void MenuOpen()
+    {
+        menuUI.SetActive(true);
+
+    }
+    public void MenuClose()
+    {
+        menuUI.SetActive(false);
+    }
+
+
 
     /** SHAKER UPGRADE
         This contains:
