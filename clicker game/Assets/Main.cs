@@ -106,6 +106,24 @@ public class Main : MonoBehaviour
             }
         }
         **/
+        if (tutorialPlayed == false && CDCount >= 20)
+        {
+            arrow.SetActive(true);
+        }
+        if (tutorialPlayed == false && timesUpgraded1 == 1)
+        {
+            arrow.SetActive(false);
+            tutorialPlayed = true;
+        }
+        if (tutorialPlayed == true && tutorialPlayed2 == false)
+        {
+            arrow2.SetActive(true);
+        }
+        if (tutorialPlayed2 == false && shop.shopOpened == true)
+        {
+            arrow2.SetActive(false);
+            tutorialPlayed2 = true;
+        }
     }
 
     /** GENERAL
