@@ -7,12 +7,15 @@ using TMPro;
 
 public class Menu : MonoBehaviour
 {
+    [Header("General")]
     public static Double CDCountOverall;
     public static Double CDCountHighest = 0;
     public TextMeshProUGUI CDCountOverallText;
     public GameObject StatsUI;
     public GameObject SettingsUI;
     public Main main;
+    [Header("Quests")]
+    public TextMeshProUGUI claimButtonText1;
     
     // Start is called before the first frame update
     void Start()
