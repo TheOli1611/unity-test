@@ -16,6 +16,8 @@ public class Menu : MonoBehaviour
     public Main main;
     [Header("Quests")]
     public TextMeshProUGUI claimButtonText1;
+    public TextMeshProUGUI questAmountText;
+    public int numClicks;
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class Menu : MonoBehaviour
         }
         CDCountOverall = Main.CDOverall;
         CDCountOverallText.text = "Total CD: " + CDCountOverall.ToString() + "\nHighest CD: " + CDCountHighest.ToString() + "\nNumber of Shakers: " + main.timesUpgraded1 + "\nNumber of Cloud Helpers: " + main.timesUpgraded2;
-        
+        numClicks = main.questAmount;
     }
 
     public void StatsOpen()
