@@ -81,8 +81,8 @@ public class Main : MonoBehaviour
 
         if (timesUpgraded2 > 0 && Time.fixedTime - pointTimer >= pointSpeed)
         {
-            CDCount += 1 + timesUpgraded2 - 1;
-            CDOverall += 1 + timesUpgraded2 - 1;
+            CDCount += 10 + timesUpgraded2 - 1;
+            CDOverall += 10 + timesUpgraded2 - 1;
             UpdateCDCountText();
             pointTimer = Time.fixedTime;
         }
@@ -204,7 +204,7 @@ public class Main : MonoBehaviour
             CDCount = CDCount - requiredAmount1;
             Debug.Log("New Total" + CDCount);
             timesUpgraded1 += 1;
-            requiredAmount1 = Math.Round(basePrice1 * Math.Pow(2.5, timesUpgraded1));
+            requiredAmount1 = Math.Round(basePrice1 * Math.Pow(1.5, timesUpgraded1));
             UpdatePriceText();
             UpdateTimesUpgradedText();
             UpdateCDCountText();
