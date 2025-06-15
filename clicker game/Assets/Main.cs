@@ -18,6 +18,9 @@ public class Main : MonoBehaviour
     public Boolean tutorialPlayed = false;
     public Boolean tutorialPlayed2 = false;
     public Shop shop;
+    public AudioSource click;
+    public AudioSource buy;
+    public AudioSource mainMusic;
     [Header("Menu")]
     public GameObject menuUI;
     public Button menuButton;
@@ -26,6 +29,7 @@ public class Main : MonoBehaviour
     public int basePrice1 = 20;
     public Double requiredAmount1;
     public int timesUpgraded1 = 0;
+    public int overallCount = 0;
     public Button upgradeButton1;
     public TextMeshProUGUI priceText1;
     public TextMeshProUGUI timesUpgradedText1;
@@ -33,15 +37,25 @@ public class Main : MonoBehaviour
     public int basePrice2 = 50;
     public Double requiredAmount2;
     public int timesUpgraded2 = 0;
+    public int overallCount2 = 0;
     public Button upgradeButton2;
     public TextMeshProUGUI priceText2;
     public TextMeshProUGUI timesUpgradedText2;
     public float pointTimer;
     public float pointSpeed = 1f;
+    [Header("Water Upgrade")]
+    public int basePrice3 = 500;
+    public Double requiredAmount3;
+    public Double upgradeMulti = 1;
+    public int timesUpgraded3 = 0;
+    public int overallCount3 = 0;
+    public Button upgradeButton3;
+    public TextMeshProUGUI priceText3;
+    public TextMeshProUGUI timesUpgradedText3;
+
+
     [Header("Quest")]
     public int questAmount;
-    public Button claimButton;
-    public TextMeshProUGUI questAmountText;
 
 
     // Start is called before the first frame update
@@ -49,12 +63,17 @@ public class Main : MonoBehaviour
     {
         CDCount = 0;
         upgradeButton1.interactable = false;
+        upgradeButton2.interactable = false;
+        upgradeButton3.interactable = false;
         UpdatePriceText();
 
         requiredAmount1 = basePrice1;
         requiredAmount2 = basePrice2;
+        requiredAmount3 = basePrice3;
 
         pointTimer = Time.fixedTime;
+        UpdatePriceText();
+        mainMusic.Play();
     }
 
     // Update is called once per frame
@@ -79,10 +98,21 @@ public class Main : MonoBehaviour
             upgradeButton2.interactable = false;
         }
 
-        if (timesUpgraded2 > 0 && Time.fixedTime - pointTimer >= pointSpeed)
+        if (CDCount >= requiredAmount3)
         {
-            CDCount += 10 + timesUpgraded2 - 1;
-            CDOverall += 10 + timesUpgraded2 - 1;
+            upgradeButton3.interactable = true;
+        }
+        else
+        {
+            upgradeButton3.interactable = false;
+        }
+
+        if (overallCount2 > 0 && Time.fixedTime - pointTimer >= pointSpeed)
+        {
+
+            CDCount += Math.Round(10 * overallCount2 * upgradeMulti * shop.multiply);
+            CDOverall += Math.Round(10 * overallCount2 * upgradeMulti * shop.multiply);
+
             UpdateCDCountText();
             pointTimer = Time.fixedTime;
         }
@@ -137,15 +167,19 @@ public class Main : MonoBehaviour
     //adds CD with every click and updates the text
     public void AddCD()
     {
-        CDCount = CDCount + 1 + timesUpgraded1;
-        CDOverall = CDOverall + 1 + timesUpgraded1;
+
+        CDCount = CDCount + Math.Round((1 + overallCount) * upgradeMulti * shop.multiply);
+        CDOverall = CDOverall + Math.Round((1 + overallCount) * upgradeMulti * shop.multiply);
+
         questAmount += 1;
-        if(questAmount >= 500)
+        if (questAmount >= 500)
         {
             questAmount = 500;
         }
         Debug.Log(CDCount);
         UpdateCDCountText();
+        click.time = 0.3f;
+        click.Play();
     }
     //updates CD Count text
     public void UpdateCDCountText()
@@ -203,7 +237,9 @@ public class Main : MonoBehaviour
         {
             CDCount = CDCount - requiredAmount1;
             Debug.Log("New Total" + CDCount);
+            buy.Play();
             timesUpgraded1 += 1;
+            overallCount += 1;
             requiredAmount1 = Math.Round(basePrice1 * Math.Pow(1.5, timesUpgraded1));
             UpdatePriceText();
             UpdateTimesUpgradedText();
@@ -216,18 +252,23 @@ public class Main : MonoBehaviour
     {
         priceText1.text = requiredAmount1.ToString() + " CD";
         priceText2.text = requiredAmount2.ToString() + " CD";
+        priceText3.text = requiredAmount3.ToString() + " CD";
     }
 
     //updates times upgraded text for upgrade 1
     public void UpdateTimesUpgradedText()
     {
-        timesUpgradedText1.text = timesUpgraded1.ToString();
-        timesUpgradedText2.text = timesUpgraded2.ToString();
+        timesUpgradedText1.text = overallCount.ToString();
+        timesUpgradedText2.text = overallCount2.ToString();
+        timesUpgradedText3.text = overallCount3.ToString();
     }
 
     /** CLOUD HELPER UPGRADE
         This contains:
-        - 
+        - Updating CLoud Helper price
+        - Buying upgrade with CD
+        - Keeping track of number of times upgraded
+        - Updates Text
     **/
 
     public void Upgrade2()
@@ -236,7 +277,9 @@ public class Main : MonoBehaviour
         {
             CDCount = CDCount - requiredAmount2;
             Debug.Log("New Total" + CDCount);
+            buy.Play();
             timesUpgraded2 += 1;
+            overallCount2 += 1;
             requiredAmount2 = Math.Round(basePrice2 * Math.Pow(1.5, timesUpgraded2));
             UpdatePriceText();
             UpdateTimesUpgradedText();
@@ -244,14 +287,27 @@ public class Main : MonoBehaviour
         }
     }
 
-    IEnumerator AddCDPerSec()
-    {
-        WaitForSeconds delay = new WaitForSeconds(1);
+    /** WATER UPGRADE
+        This contains:
+        - 
+    **/
 
-        while (true)
+    public void Upgrade3()
+    {
+        if (CDCount >= requiredAmount3)
         {
-            CDCount += 1;
-            yield return delay;
+            CDCount = CDCount - requiredAmount3;
+            Debug.Log("New Total" + CDCount);
+            buy.Play();
+            timesUpgraded3 += 1;
+            overallCount3 += 1;
+
+            upgradeMulti += 0.3;
+
+            requiredAmount3 = Math.Round(basePrice3 * Math.Pow(2.5, timesUpgraded3));
+            UpdatePriceText();
+            UpdateTimesUpgradedText();
+            UpdateCDCountText();
         }
     }
 
