@@ -2498,7 +2498,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1312587782}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: StatsOpen
         m_Mode: 1
@@ -8791,7 +8791,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1312587782}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: SettingsOpen
         m_Mode: 1
