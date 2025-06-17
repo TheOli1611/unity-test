@@ -100,10 +100,10 @@ TextureImporter:
       name: ChanLost1_0
       rect:
         serializedVersion: 2
-        x: 573
+        x: 0
         y: 484
-        width: 1961
-        height: 2966
+        width: 3000
+        height: 3516
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

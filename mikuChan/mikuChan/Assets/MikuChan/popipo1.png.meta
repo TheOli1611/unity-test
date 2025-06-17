@@ -47,7 +47,7 @@ TextureImporter:
   spriteExtrude: 4
   spriteMeshType: 1
   alignment: 7
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -95,7 +95,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: popipo1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 242
+        width: 3000
+        height: 3758
+      alignment: 9
+      pivot: {x: 0.43478847, y: 0.0006374422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7853c25820df4f249af503fafb6f98b5
+      internalID: 2041033219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -109,7 +131,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      popipo1_0: 2041033219
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

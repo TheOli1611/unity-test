@@ -30,18 +30,31 @@ public class ChanScript : MonoBehaviour
 
     int i = 0;
     float testSptiteTimer;
-    float testSpriteTime = 0.3f;
+     public float testSpriteTime = 0.18f;
     public int popipoper; // flips chan
     // Update is called once per frame
     void Update()
     {
         testSptiteTimer += Time.deltaTime;
-        if (testSptiteTimer >= 0.4 && mikuGame == minigame.Lucas1)
+        if (testSptiteTimer >= testSpriteTime && mikuGame == minigame.Lucas1)
         {
-            mySprite.sprite = mesmerizerSpri[i];
-            if (i < mesmerizerSpri.Length - 1) i++;
-            else i = 0;
+            mySprite.sprite = popipoSpri[i];
+            if (i < popipoSpri.Length - 1)
+            {
+                i++;
+            }
+            else
+            {
+                i = 0;
+                popipoper++;
 
+                if (popipoper % 4 > 0)
+                {
+                    mySprite.flipX = (mySprite.flipX == false) ? true : false;
+                }
+            }
+
+            
             testSptiteTimer = 0;
         } 
     }

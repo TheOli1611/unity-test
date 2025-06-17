@@ -577,6 +577,70 @@ PrefabInstance:
       propertyPath: mikuGame
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'loseSpri.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1435361801, guid: a8445e745070cfa498482acf9bd5e9a0, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'loseSpri.Array.data[1]'
+      value: 
+      objectReference: {fileID: -1894735465, guid: dda8a2ad4cd937149a274aff437df08a, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'loseSpri.Array.data[2]'
+      value: 
+      objectReference: {fileID: -1894735465, guid: dda8a2ad4cd937149a274aff437df08a, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'popipoSpri.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2041033219, guid: 3925613072ebee940b7ca27edfb3a2e7, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'popipoSpri.Array.data[1]'
+      value: 
+      objectReference: {fileID: -617163436, guid: e18cc5219cf18c843b4ebc36ad710926, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[0]'
+      value: 
+      objectReference: {fileID: 294143109, guid: f94500505b06ca248ba6054ecca7299b, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[1]'
+      value: 
+      objectReference: {fileID: -1775031170, guid: d67b38f70cbcef24a9df48857d74da95, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[2]'
+      value: 
+      objectReference: {fileID: -1356306653, guid: c0d5da162ab7df7478173239779c9688, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[3]'
+      value: 
+      objectReference: {fileID: 36769625, guid: f42ab7e308501b24ebfacc0af7779374, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[4]'
+      value: 
+      objectReference: {fileID: -216257797, guid: 8282d47e19ba4e94095234ab13885997, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[5]'
+      value: 
+      objectReference: {fileID: -1662192126, guid: 14ffaa8a49d8fe149b133927a207c9d4, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[6]'
+      value: 
+      objectReference: {fileID: 923983720, guid: c02afd5b92b7322488ee27cf58a85a6f, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[7]'
+      value: 
+      objectReference: {fileID: -804154988, guid: 84c6b27ee3e93b34dbd51022b1895721, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[8]'
+      value: 
+      objectReference: {fileID: 1821428693, guid: bc81c8f8bc89d484b9b71782a4a2b462, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[9]'
+      value: 
+      objectReference: {fileID: 1951185783, guid: 9ef497f6f01885849a84937f26153d99, type: 3}
+    - target: {fileID: 39806642157467681, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
+      propertyPath: 'mesmerizerSpri.Array.data[10]'
+      value: 
+      objectReference: {fileID: -247301777, guid: 2fc2542b211deed4d924d05dc708d88d, type: 3}
     - target: {fileID: 657014014339776568, guid: f0c67e27d0c07a147a5d8477d0573d9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

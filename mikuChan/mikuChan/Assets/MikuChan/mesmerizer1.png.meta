@@ -100,10 +100,10 @@ TextureImporter:
       name: mesmerizer1_0
       rect:
         serializedVersion: 2
-        x: 400
+        x: 0
         y: 56
-        width: 2052
-        height: 3217
+        width: 3000
+        height: 3944
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

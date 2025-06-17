@@ -100,10 +100,10 @@ TextureImporter:
       name: channinfit_0
       rect:
         serializedVersion: 2
-        x: 414
+        x: 0
         y: 151
-        width: 2035
-        height: 3739
+        width: 3000
+        height: 3849
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
