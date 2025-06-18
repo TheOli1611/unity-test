@@ -42,6 +42,16 @@ public class Shop : MonoBehaviour
     [Header("Cursor")]
     public Texture2D cursorTexture;
     private Vector2 cursorHotspot = Vector2.zero;
+    [Header("CD Shop")]
+    public Button CDBuy1;
+    public TextMeshProUGUI CDCprice1;
+    public Button CDBuy2;
+    public TextMeshProUGUI CDCprice2;
+    public Button CDBuy3;
+    public TextMeshProUGUI CDCprice3;
+    public GameObject CDpopupUI;
+    public Button CDclosePopUp;
+    public GameObject CDshop;
 
 
     // Start is called before the first frame update
@@ -167,11 +177,54 @@ public class Shop : MonoBehaviour
 
     public void CursorBuy()
     {
-        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+        Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.ForceSoftware);
         main.buy.Play();
         popUpUI.SetActive(true);
         buyPopup.SetActive(true);
         buy1.interactable = false;
         priceText.text = "SOLD";
+    }
+
+    public void CDBuyPackage()
+    {
+        Main.CDCount += 2000;
+        Main.CDOverall += 2000;
+        main.buy.Play();
+        main.UpdateCDCountText();
+        CDpopupUI.SetActive(true);
+        CDCprice1.text = "+2000 | SOLD";
+        CDBuy1.interactable = false;
+    }
+    public void CDBuyPackage2()
+    {
+        Main.CDCount += 6000;
+        Main.CDOverall += 6000;
+        main.buy.Play();
+        main.UpdateCDCountText();
+        CDpopupUI.SetActive(true);
+        CDCprice2.text = "+6000 | SOLD";
+        CDBuy2.interactable = false;
+    }
+    public void CDBuyPackage3()
+    {
+        Main.CDCount += 10000;
+        Main.CDOverall += 10000;
+        main.buy.Play();
+        main.UpdateCDCountText();
+        CDpopupUI.SetActive(true);
+        CDCprice3.text = "+10000 | SOLD";
+        CDBuy3.interactable = false;
+    }
+    public void CDClosePopUp()
+    {
+        CDpopupUI.SetActive(false);
+    }
+    public void Back()
+    {
+        CDshop.SetActive(false);
+    }
+    public void OpenCDShop()
+    {
+        CDshop.SetActive(true);
     }
 }
