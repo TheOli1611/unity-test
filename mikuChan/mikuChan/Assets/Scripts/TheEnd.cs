@@ -79,6 +79,7 @@ public class TheEnd : MonoBehaviour
         currentTime = timeStart;
         TimeTextUpdate(currentTime);
         timeEnd = false;
+        GlobalMetrics.totalLevelsPlayed += 1;
     }
 
     // Update is called once per frame
@@ -112,15 +113,16 @@ public class TheEnd : MonoBehaviour
         }
         if (GlobalMetrics.level == 1 && timeEnd == true)
         {
-            if (timeEnd == true && clicks >= 35 && stopLog == false)
+            if (timeEnd == true && clicks >= 45 && stopLog == false)
             {
                 pass = true;
                 videoPlayer.time = 150f;
                 StartCoroutine(PassAnim(2));
                 Debug.Log("pass");
                 stopLog = true;
+                GlobalMetrics.winner = true;
             }
-            else if (timeEnd == true && clicks < 35 && stopLog == false)
+            else if (timeEnd == true && clicks < 45 && stopLog == false)
             {
                 videoPlayer.time = 153f;
                 videoPlayer.Stop();
@@ -128,20 +130,22 @@ public class TheEnd : MonoBehaviour
                 StartCoroutine(FailAnim(2));
                 Debug.Log("fail");
                 stopLog = true;
+                GlobalMetrics.winner = false;
             }
 
         }
         else if (GlobalMetrics.level == 2)
         {
-            if (timeEnd == true && clicks > 25 && stopLog == false)
+            if (timeEnd == true && clicks > 30 && stopLog == false)
             {
                 pass = true;
                 videoPlayer.time = 150f;
                 StartCoroutine(PassAnim(2));
                 Debug.Log("pass");
                 stopLog = true;
+                GlobalMetrics.winner = true;
             }
-            else if (timeEnd == true && clicks < 25 && stopLog == false)
+            else if (timeEnd == true && clicks < 30 && stopLog == false)
             {
                 videoPlayer.time = 153f;
                 videoPlayer.Stop();
@@ -149,6 +153,7 @@ public class TheEnd : MonoBehaviour
                 StartCoroutine(FailAnim(2));
                 Debug.Log("fail");
                 stopLog = true;
+                GlobalMetrics.winner = false;
             }
         }
         else if (GlobalMetrics.level == 3)
@@ -160,6 +165,7 @@ public class TheEnd : MonoBehaviour
                 StartCoroutine(PassAnim(2));
                 Debug.Log("pass");
                 stopLog = true;
+                GlobalMetrics.winner = true;
             }
             else if (timeEnd == true && clicks < 25 && stopLog == false)
             {
@@ -169,6 +175,7 @@ public class TheEnd : MonoBehaviour
                 StartCoroutine(FailAnim(2));
                 Debug.Log("fail");
                 stopLog = true;
+                GlobalMetrics.winner = false;
             }
         }
     }

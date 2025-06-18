@@ -85,7 +85,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &39806642157467681
@@ -100,24 +100,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c797cbbc2b48844898e088b4166e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mikuGame: 0
+  mikuGame: 2
   mesmerizerSpri:
-  - {fileID: 21300000, guid: f94500505b06ca248ba6054ecca7299b, type: 3}
-  - {fileID: 21300000, guid: d67b38f70cbcef24a9df48857d74da95, type: 3}
-  - {fileID: 21300000, guid: c0d5da162ab7df7478173239779c9688, type: 3}
-  - {fileID: 21300000, guid: f42ab7e308501b24ebfacc0af7779374, type: 3}
-  - {fileID: 21300000, guid: 8282d47e19ba4e94095234ab13885997, type: 3}
-  - {fileID: 21300000, guid: 14ffaa8a49d8fe149b133927a207c9d4, type: 3}
-  - {fileID: 21300000, guid: c02afd5b92b7322488ee27cf58a85a6f, type: 3}
-  - {fileID: 21300000, guid: 84c6b27ee3e93b34dbd51022b1895721, type: 3}
-  - {fileID: 21300000, guid: bc81c8f8bc89d484b9b71782a4a2b462, type: 3}
-  - {fileID: 21300000, guid: 9ef497f6f01885849a84937f26153d99, type: 3}
-  - {fileID: 21300000, guid: 2fc2542b211deed4d924d05dc708d88d, type: 3}
+  - {fileID: 294143109, guid: f94500505b06ca248ba6054ecca7299b, type: 3}
+  - {fileID: -1775031170, guid: d67b38f70cbcef24a9df48857d74da95, type: 3}
+  - {fileID: -1356306653, guid: c0d5da162ab7df7478173239779c9688, type: 3}
+  - {fileID: 36769625, guid: f42ab7e308501b24ebfacc0af7779374, type: 3}
+  - {fileID: -216257797, guid: 8282d47e19ba4e94095234ab13885997, type: 3}
+  - {fileID: -1662192126, guid: 14ffaa8a49d8fe149b133927a207c9d4, type: 3}
+  - {fileID: 923983720, guid: c02afd5b92b7322488ee27cf58a85a6f, type: 3}
+  - {fileID: -804154988, guid: 84c6b27ee3e93b34dbd51022b1895721, type: 3}
+  - {fileID: 1821428693, guid: bc81c8f8bc89d484b9b71782a4a2b462, type: 3}
+  - {fileID: 1951185783, guid: 9ef497f6f01885849a84937f26153d99, type: 3}
+  - {fileID: -247301777, guid: 2fc2542b211deed4d924d05dc708d88d, type: 3}
   popipoSpri:
-  - {fileID: 21300000, guid: 3925613072ebee940b7ca27edfb3a2e7, type: 3}
-  - {fileID: 21300000, guid: e18cc5219cf18c843b4ebc36ad710926, type: 3}
+  - {fileID: -247301777, guid: 2fc2542b211deed4d924d05dc708d88d, type: 3}
+  - {fileID: -617163436, guid: e18cc5219cf18c843b4ebc36ad710926, type: 3}
   loseSpri:
-  - {fileID: 21300000, guid: a8445e745070cfa498482acf9bd5e9a0, type: 3}
-  - {fileID: 21300000, guid: 5bc01daf812ce5446bbe51b1c1384f4d, type: 3}
-  - {fileID: 21300000, guid: dda8a2ad4cd937149a274aff437df08a, type: 3}
+  - {fileID: 1435361801, guid: a8445e745070cfa498482acf9bd5e9a0, type: 3}
+  - {fileID: -1894735465, guid: dda8a2ad4cd937149a274aff437df08a, type: 3}
+  - {fileID: -1894735465, guid: dda8a2ad4cd937149a274aff437df08a, type: 3}
+  testSpriteTime: 0.18
   popipoper: 0

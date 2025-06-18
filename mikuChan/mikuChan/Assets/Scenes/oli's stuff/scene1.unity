@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6866902, g: 0.8113208, b: 0.61614454, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1928,7 +1928,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'HELP MIKU-CHAN TO PASS
 
-    "THE END"'
+    "THE END"
+
+    Spam the button!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ede179761a3705849b23a52de2f8b03b, type: 2}
   m_sharedMaterial: {fileID: -8457395689461641386, guid: ede179761a3705849b23a52de2f8b03b, type: 2}

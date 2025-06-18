@@ -16,15 +16,18 @@ public class FindChan : MonoBehaviour
     [Header("Chan Buttons")]
     public Button chanButton1;
     public GameObject chanButtonUI;
-    [Header("Chan Buttons")]
+    public RectTransform buttonPos;
+    public RectTransform lvl1Pos;
+    public RectTransform lvl2Pos;
+    public RectTransform lvl3Pos;
+    [Header("Chan Images")]
     public UnityEngine.UI.Image chanImage1;
     public Sprite chanSprite;
     public Sprite chanSprite2;
+    public Sprite chanSprite3;
     [Header("Levels")]
     public GameObject startUI;
     public GameObject level1;
-    public GameObject level2;
-    public GameObject level3;
     [Header("Time")]
     public float currentTime;
     public float timeStart = 7f;
@@ -33,6 +36,12 @@ public class FindChan : MonoBehaviour
     public bool timeEnd = false;
     [Header("Extras")]
     public bool found = false;
+    public AudioSource check;
+    public AudioSource yippie;
+    public AudioSource lose;
+    public Animator bgAnim;
+    public TextMeshProUGUI winloseText;
+    public GameObject winloseUI;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,6 +49,9 @@ public class FindChan : MonoBehaviour
     {
         startUI.SetActive(true);
         chanImage1.sprite = chanSprite;
+        chanButtonUI.SetActive(false);
+        winloseUI.SetActive(false);
+        level1.SetActive(true);
 
         if (GlobalMetrics.level == 1)
         {
@@ -57,7 +69,8 @@ public class FindChan : MonoBehaviour
         currentTime = timeStart;
         TimeTextUpdate(currentTime);
         timeEnd = false;
-        StartCoroutine(StartUI(3));
+        GlobalMetrics.totalLevelsPlayed += 1;
+        StartCoroutine(StartUI(2));
     }
 
     // Update is called once per frame
@@ -78,9 +91,15 @@ public class FindChan : MonoBehaviour
                 timeEnd = true;
             }
         }
-        if (timeEnd == true)
+        if (timeEnd == true && found == false)
         {
-            
+            bgAnim.SetTrigger("bgEnd");
+            chanImage1.sprite = chanSprite3;
+            check.Stop();
+            lose.Play();
+            winloseText.text = "Didn't find him :(";
+            winloseUI.SetActive(true);
+            GlobalMetrics.winner = false;
         }
     }
 
@@ -88,22 +107,18 @@ public class FindChan : MonoBehaviour
     {
         if (timeEnd != true)
         {
-            if (GlobalMetrics.level == 1)
-            {
-                found = true;
-                chanButton1.interactable = false;
-                chanImage1.sprite = chanSprite2;
-                Debug.Log("Found!");
-            }
-            else if (GlobalMetrics.level == 2)
-            {
-
-            }
-            else if (GlobalMetrics.level == 3)
-            {
-
-            }
-            
+            found = true;
+            chanButton1.interactable = false;
+            chanImage1.sprite = chanSprite2;
+            Debug.Log("Found!");
+            bgAnim.SetTrigger("bgEnd");
+            timeRun = false;
+            yippie.time = 1f;
+            yippie.Play();
+            check.Stop();
+            winloseText.text = "Found!";
+            winloseUI.SetActive(true);
+            GlobalMetrics.winner = true;
         }
     }
 
@@ -119,18 +134,30 @@ public class FindChan : MonoBehaviour
         startUI.SetActive(false);
         if (GlobalMetrics.level == 1)
         {
-            level1.SetActive(true);
             timeRun = true;
+            check.time = 74f;
+            check.Play();
+            buttonPos.anchoredPosition = lvl1Pos.anchoredPosition;
+            chanButtonUI.SetActive(true);
+            bgAnim.SetTrigger("bgStart");
         }
         else if (GlobalMetrics.level == 2)
         {
-            level2.SetActive(true);
             timeRun = true;
+            check.time = 74f;
+            check.Play();
+            buttonPos.anchoredPosition = lvl2Pos.anchoredPosition;
+            chanButtonUI.SetActive(true);
+            bgAnim.SetTrigger("bgStart2");
         }
         else if (GlobalMetrics.level == 3)
         {
-            level3.SetActive(true);
             timeRun = true;
+            check.time = 74f;
+            check.Play();
+            buttonPos.anchoredPosition = lvl3Pos.anchoredPosition;
+            chanButtonUI.SetActive(true);
+            bgAnim.SetTrigger("bgStart3");
         }
     }
 }

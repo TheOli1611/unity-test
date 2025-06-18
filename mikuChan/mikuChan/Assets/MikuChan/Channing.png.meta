@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 993d8fe6cc44d5949b3110d02c725536
+guid: 045068253908bc44bb8d91807914ecea
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,34 +108,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: sideChan_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 176
-        width: 3000
-        height: 3824
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bcdfccf7d8aa4e649a3a59c56e1e9d49
-      internalID: -510975695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2fd6e77590e756747888a1f9b627d24c
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -144,8 +122,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      sideChan_0: -510975695
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
